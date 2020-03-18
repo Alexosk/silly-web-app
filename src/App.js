@@ -7,6 +7,7 @@ class App extends Component {
 
     this.state = {
       value: '',
+      lastKeyPress: ''
     };
   }
 
@@ -23,20 +24,21 @@ class App extends Component {
   };
 
   onKeyPress = ({charCode}) => {
-    console.log(String.fromCharCode(charCode));
+    this.setState({ lastKeyPress: String.fromCharCode(charCode)});
   }
 
   render() {
+    const {value, lastKeyPress} = this.state;
     return (
       <div className="App">
         <input
           placeholder='Start typing'
-          value={this.state.value}
+          value={value}
           onChange={this.onInputChange}
           onKeyPress={this.onKeyPress}
           />
         <div>
-          <p>Last key pressed was: {this.state.lastKeyPress}</p>
+          <p>Last key pressed was: {lastKeyPress}</p>
         </div>
       </div>
     );
