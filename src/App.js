@@ -10,7 +10,10 @@ class App extends Component {
     };
   }
 
-  shouldComponentUpdate() {
+  shouldComponentUpdate(nextState) {
+    if(this.state.value !== nextState.value) {
+      return true
+    }
     return false;
   }
 
